@@ -1,8 +1,10 @@
 'use strict';
 
 const LinkedList = require('./LinkedList');
+const DoubleLL = require('./Dll')
 
 const SSL = new LinkedList();
+const DLL = new DoubleLL();
 
 function main() {
   SSL.insertFirst('Apollo');
@@ -26,10 +28,45 @@ function main() {
   console.log(SSL.isEmpty());
   console.log(SSL.findPrevious('Apollo'));
   console.log(SSL.findLast());
+  console.log('REVERSING')
   SSL.reverseList();
   SSL.display();
-  SSL.thirdFromEnd();
-  console.log('middle', SSL.MiddleOfList());
+  // SSL.thirdFromEnd();
+  // console.log('middle', SSL.MiddleOfList());
+
+  // console.log('cycle:', SSL.cycleInAList());
+  // SSL.insertFirst('Apollo');
+  // SSL.display();
+  // console.log('cycle:', SSL.cycleInAList());
+
+
+  // DLL.insertFirst('Aquaria');
+  // DLL.insertFirst('Caprica');
+  // DLL.insertFirst('Gemenon');
+  // DLL.insertFirst('Picon');
+  // DLL.insertFirst('Sagittaron');
+  // DLL.display();
+
+  // DLL.insertLast('Tauron');
+  // console.log('Tauron added to the end')
+  // DLL.display();
+
+  // DLL.insertBefore('Thing', 'Picon');
+  // console.log('Inserted Thing before Picon');
+  // DLL.display();
+
+  // DLL.insertAfter('After', 'Caprica');
+  // console.log('Inserted After after Caprica');
+  // DLL.display();
+
+  // DLL.insertAt('Put Me In The Middle', 5);
+  // console.log('Silly message should be 5');
+  // DLL.display();
+
+  // DLL.remove('Picon');
+  // console.log('Removing Picon');
+  // DLL.display();
+
 
   return;
 }

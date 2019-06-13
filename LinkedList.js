@@ -73,6 +73,32 @@ class LinkedList {
     // Found it
     return currNode;
   }
+  
+  reverseList() {
+    let currentNode = this.head; //1 [1, 2, 3, 4, 5, 6]
+    let previousNode = this.head; //1
+    let nextNode = this.head.next; //2
+
+    while (currentNode !== null) {
+      previousNode = currentNode; //1 = 1 //1 = 2 //2 = 3
+      currentNode = nextNode //1 = 2 //2 = 3 //3 = 4
+      nextNode = nextNode.next; //2 = 3 // 3 = 4 //4 = 5
+
+      if (previousNode === this.head) {
+        previousNode.next = null; //1-> null
+      } 
+      
+      currentNode.next = previousNode; //2 -> 1 // 3 -> 2
+
+      if (nextNode === null) {
+        this.head = nextNode;
+        return;
+      }
+    }
+  }
+  //change head to point to null
+  //change currentNode.next to point to currentNode
+  //
 
   remove(item) {
     // If the list is empty
@@ -145,39 +171,6 @@ class LinkedList {
     return currentNode;
   }
 
-  reverseList() {
-    let currentNode = this.head;
-    let tempNode;
-    while (currentNode !== null) {
-      tempNode = currentNode.next;
-      tempNode.previous = currentNode;
-      currentNode = currentNode.next;
-    }
-  }
-
-  // reverselist() {
-  //   let currentNode = this.head;
-  //   let tempNode;
-  //   let nextTempNode;
-  //   while (nextTempNode !== null) {
-  //     if (currentNode === this.head) {
-  //       tempNode = currentNode.next;
-  //       nextTempNode = currentNode.next.next;
-  //       currentNode.next = null;
-  //     }
-  //     tempNode.next = currentNode;
-  //     currentNode = tempNode;
-  //     tempNode = nextTempNode;
-  //     console.log(tempNode, currentNode, nextTempNode);
-  //     if (nextTempNode === null) {
-  //       this.head = tempNode;
-  //       return this.head;
-  //     }
-  //   }
-  // currentNode.next = null;
-
-  //   return this.head;
-  // }
 
   thirdFromEnd() {
     let currentNode = this.head;
@@ -206,6 +199,21 @@ class LinkedList {
       }
       currentNode = currentNode.next;
     }
+  }
+
+  cycleInAList() {
+    let currentNode = this.head;
+    let values = [];
+
+    while (currentNode !== null) {
+      if (values.includes(currentNode.value)){
+        return true;
+      }
+      values.push(currentNode.value);
+      currentNode = currentNode.next;
+    }
+
+    return false;
   }
 }
 module.exports = LinkedList;
