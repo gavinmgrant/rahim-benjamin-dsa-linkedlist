@@ -22,6 +22,39 @@ class LinkedList {
     }
   }
 
+  insertBefore(insertItem, value) {
+    let currentNode = this.head;
+    while (value !== currentNode.next.value) {
+      console.log(currentNode.next.value);
+      currentNode = currentNode.next;
+      // if (currentNode.next.value === null) {
+      //   return null;
+      // }
+    }
+    let findValue = this.find(value);
+
+    currentNode.next = new _Node(insertItem, findValue);
+  }
+
+  insertAfter(insertItem, value) {
+    let findValue = this.find(value);
+    let tempNext = findValue.next;
+    findValue.next = new _Node(insertItem, tempNext);
+  }
+
+  insertAt(insertItem, position) {
+    let currentNode = this.head;
+    let count = 0;
+    while (currentNode.next.value !== null) {
+      count++;
+      currentNode = currentNode.next;
+      if (count === position) {
+        console.log(currentNode);
+        this.insertBefore(insertItem, currentNode);
+      }
+    }
+  }
+
   find(item) {
     // Start at the head
     let currNode = this.head;
@@ -69,6 +102,14 @@ class LinkedList {
       return;
     }
     previousNode.next = currNode.next;
+  }
+
+  printList() {
+    let currentNode = this.head;
+    while (currentNode.next !== null) {
+      console.log(currentNode.value);
+      currentNode = currentNode.next;
+    }
   }
 }
 module.exports = LinkedList;
