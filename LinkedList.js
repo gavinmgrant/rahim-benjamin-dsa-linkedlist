@@ -101,12 +101,49 @@ class LinkedList {
     previousNode.next = currNode.next;
   }
 
-  printList() {
+  display() {
     let currentNode = this.head;
     while (currentNode !== null) {
       console.log(currentNode.value);
       currentNode = currentNode.next;
     }
   }
+
+  size() {
+    let currentNode = this.head;
+    let counter = 0;
+    while (currentNode !== null) {
+      counter++;
+      currentNode = currentNode.next;
+    }
+    console.log(counter);
+    return counter;
+  }
+
+  isEmpty() {
+    if (this.head === null) return true;
+    return false;
+  }
+
+  findPrevious(item) {
+    let currentNode = this.head;
+
+    while (item !== currentNode.next.value) {
+      currentNode = currentNode.next;
+    }
+
+    return currentNode;
+  }
+
+  findLast() {
+    let currentNode = this.head;
+
+    while (currentNode.next !== null) {
+      currentNode = currentNode.next;
+    }
+
+    return currentNode;
+  }
+
 }
 module.exports = LinkedList;
