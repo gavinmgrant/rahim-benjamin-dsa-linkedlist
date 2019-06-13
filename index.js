@@ -26,7 +26,7 @@ function main() {
   console.log(SSL.isEmpty());
   console.log(SSL.findPrevious('Apollo'));
   console.log(SSL.findLast());
-  SSL.reverselist();
+  SSL.reverseList();
   SSL.display();
   SSL.thirdFromEnd();
   console.log('middle', SSL.MiddleOfList());
