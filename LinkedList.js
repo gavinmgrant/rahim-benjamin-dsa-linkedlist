@@ -24,12 +24,9 @@ class LinkedList {
 
   insertBefore(insertItem, value) {
     let currentNode = this.head;
+    
     while (value !== currentNode.next.value) {
-      console.log(currentNode.next.value);
       currentNode = currentNode.next;
-      // if (currentNode.next.value === null) {
-      //   return null;
-      // }
     }
     let findValue = this.find(value);
 
@@ -45,13 +42,13 @@ class LinkedList {
   insertAt(insertItem, position) {
     let currentNode = this.head;
     let count = 0;
-    while (currentNode.next.value !== null) {
+
+    while (currentNode.next !== null) {
       count++;
-      currentNode = currentNode.next;
       if (count === position) {
-        console.log(currentNode);
-        this.insertBefore(insertItem, currentNode);
+        this.insertBefore(insertItem, currentNode.value);
       }
+      currentNode = currentNode.next;
     }
   }
 

@@ -14,10 +14,13 @@ function main() {
   SSL.remove('squirrel');
   SSL.insertBefore('Athena', 'Boomer');
   SSL.insertAfter('Hotdog', 'Helo');
+  console.log('insert after ran')
+  SSL.printList();
   SSL.insertAt('Kat', 3);
+  console.log('insert ran')
+  SSL.printList();
 
   SSL.remove('Tauhida');
-  SSL.printList();
 
   return;
 }
