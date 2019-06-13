@@ -24,7 +24,7 @@ class LinkedList {
 
   insertBefore(insertItem, value) {
     let currentNode = this.head;
-    
+
     while (value !== currentNode.next.value) {
       currentNode = currentNode.next;
     }
@@ -145,5 +145,57 @@ class LinkedList {
     return currentNode;
   }
 
+  reverselist() {
+    let currentNode = this.head;
+    let tempNode;
+    let nextTempNode;
+    while (nextTempNode !== null) {
+      if (currentNode === this.head) {
+        tempNode = currentNode.next;
+        nextTempNode = currentNode.next.next;
+        currentNode.next = null;
+      }
+      tempNode.next = currentNode;
+      currentNode = tempNode;
+      tempNode = nextTempNode;
+      console.log(tempNode, currentNode, nextTempNode);
+      if (nextTempNode === null) {
+        this.head = tempNode;
+        return this.head;
+      }
+    }
+    // currentNode.next = null;
+
+    return this.head;
+  }
+
+  thirdFromEnd() {
+    let currentNode = this.head;
+    while (currentNode.next.next.next !== null) {
+      currentNode = currentNode.next;
+    }
+    console.log('third', currentNode.value);
+    return currentNode;
+  }
+
+  MiddleOfList() {
+    const lengthList = this.size();
+    let currentNode = this.head;
+    let position = 0;
+    let count = 0;
+    if (lengthList % 2 === 1) {
+      position = lengthList / 2 + 0.5;
+    } else {
+      position = lengthList / 2;
+    }
+
+    while (currentNode.next !== null) {
+      count++;
+      if (count === position) {
+        return currentNode.value;
+      }
+      currentNode = currentNode.next;
+    }
+  }
 }
 module.exports = LinkedList;

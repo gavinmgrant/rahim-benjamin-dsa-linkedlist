@@ -15,23 +15,21 @@ function main() {
   SSL.insertBefore('Athena', 'Boomer');
   SSL.insertAfter('Hotdog', 'Helo');
 
-  console.log('insert after ran')
-  SSL.display();
-
   SSL.insertAt('Kat', 3);
-
-  console.log('insert ran')
-  SSL.display();
 
   SSL.remove('Tauhida');
 
-  console.log('checking size')
+  console.log('checking size');
   SSL.size();
   SSL.display();
 
   console.log(SSL.isEmpty());
   console.log(SSL.findPrevious('Apollo'));
   console.log(SSL.findLast());
+  SSL.reverselist();
+  SSL.display();
+  SSL.thirdFromEnd();
+  console.log('middle', SSL.MiddleOfList());
 
   return;
 }
@@ -39,3 +37,5 @@ function main() {
 main();
 
 //Question 4 - Mystery program searches for duplicates in the LL and removes them.
+
+module.exports = SSL;
