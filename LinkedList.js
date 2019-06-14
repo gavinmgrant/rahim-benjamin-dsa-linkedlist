@@ -73,33 +73,25 @@ class LinkedList {
     // Found it
     return currNode;
   }
-  
+
   reverseList() {
-    let currentNode = this.head; //1 [1, 2, 3, 4, 5, 6]
-    let previousNode = this.head; //1
-    let nextNode = this.head.next; //2
+    let currentNode = this.head; //start at the beginning
+    let node = null; //save the previous thing to point at
 
-    while (currentNode !== null) {
-      previousNode = currentNode; //1 = 1 //1 = 2 //2 = 3
-      currentNode = nextNode //1 = 2 //2 = 3 //3 = 4
-      nextNode = nextNode.next; //2 = 3 // 3 = 4 //4 = 5
+    while (currentNode !== null) { //[1, 2, 3, 4]
 
-      if (previousNode === this.head) {
-        previousNode.next = null; //1-> null
-      } 
-      
-      currentNode.next = previousNode; //2 -> 1 // 3 -> 2
+      let tempNext = currentNode.next; //2 //3
 
-      if (nextNode === null) {
-        this.head = nextNode;
-        return;
-      }
+      currentNode.next = node;//1 -> null //3
+      node = currentNode; //value from null to 1
+
+      currentNode = tempNext; //value from 1 to 2
     }
-  }
-  //change head to point to null
-  //change currentNode.next to point to currentNode
-  //
 
+    this.head = node;
+    
+  }
+  
   remove(item) {
     // If the list is empty
     if (!this.head) {
